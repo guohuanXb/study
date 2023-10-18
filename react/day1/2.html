@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="exp"></div>
+    <script type="text/javascript" src="../reactPackage/react.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/react-dom.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/babel.min.js"></script>
+    <script type="text/babel">
+        const myClass = "eXp"
+        const myData = "hEll,React"
+        const VDOM = (
+            <h2 className={myClass.toLocaleLowerCase()}>
+                <span>{myData.toLocaleLowerCase()}</span>
+            </h2>
+        )
+        //ReactDOM.render(VDOM,document.querySelector('.exp'))
+        const root = ReactDOM.createRoot(document.querySelector('.exp'))
+        root.render(VDOM)
+    </script>
+</body>
+</html>
