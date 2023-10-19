@@ -6,22 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="exp"></div>
+    <div id="test"></div>
     
     <script type="text/javascript" src="../reactPackage/react.development.js"></script>
     <script type="text/javascript" src="../reactPackage/react-dom.development.js"></script>
     <script type="text/javascript" src="../reactPackage/babel.min.js"></script>
     <script type="text/babel">
-        const myClass = "eXp"
-        const myData = "hEll,React"
+        const data = ['张三','赵四','王五'];
         const VDOM = (
-            <h2 className={myClass.toLocaleLowerCase()}  style={{background:'blue'}}>
-                <span style={{color:'white',fontSize:'30px'}}>{myData.toLocaleLowerCase()}</span>
-            </h2>
+            <div>
+                <h1>白名单</h1>
+                <ul>
+                {
+                    data.map((item,index)=>{                //map()遍历
+                        return <li key={index}>{item}</li>  //遍历必须加key值
+                    })
+                }    
+                </ul>
+            </div>
         )
-        //ReactDOM.render(VDOM,document.querySelector('.exp'))     //react17以前版本渲染写法
-        const root = ReactDOM.createRoot(document.querySelector('.exp'))   //react18 渲染写法
-        root.render(VDOM)
+        const root = ReactDOM.createRoot(document.getElementById('test'));
+        root.render(VDOM);
     </script>
 </body>
 </html>
