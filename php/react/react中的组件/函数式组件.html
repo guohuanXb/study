@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    <script type="text/javascript" src="../reactPackage/react.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/react-dom.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/babel.min.js"></script>
+    <script type="text/babel">
+        function MyComponent(){
+            return <h2>函数式组件的定义</h2>
+        }
+        ReactDOM.createRoot(document.getElementById('test')).render(<MyComponent />)
+        /*
+        ReactDOM.createRoot(document.getElementById('test')).render(<MyComponent />) 执行后
+        发生了什么？
+        1.React解析组件标签，找到MyComponent组件。
+        2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+         */
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    
+    <script type="text/javascript" src="../reactPackage/react.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/react-dom.development.js"></script>
+    <script type="text/javascript" src="../reactPackage/babel.min.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component{    //类名首字母大写
+            constructor(props){  //构造器调用1次
+                super(props)  //调用父类的构造器
+                this.state = {isHot:false}   //初始化状态
+                this.demo = this.changeWeather.bind(this)   //解决实例化对象的changeWeather函数中的this指向问题
+            }
+
+            render(){   //读取状态   render调用n+1次  n是更新次数 1是初始化的一次
+                const {isHot} = this.state
+                return (<h1 onClick = {this.demo}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>)
+            }
+
+            changeWeather(){  //事件触发几次调用几次
+                const isHot = this.state.isHot   //获取原来的isHot的值
+                this.setState({isHot:!isHot})    //状态必须通过setState()进行更改，且更新是一种合并，不是替换
+                //this.state.isHot = !isHot 是错误写法  state不可直接更改
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('test')).render(<Weather/>)
+    </script>
+</body>
+</html>
